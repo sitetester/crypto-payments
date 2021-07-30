@@ -9,7 +9,6 @@ use dotenv::dotenv;
 
 use crate::transactions_importer::TransactionsImporter;
 use crate::transactions_processor::TransactionsProcessor;
-use crate::schema::transactions::dsl::transactions;
 
 pub mod models;
 pub mod schema;
@@ -17,7 +16,6 @@ pub mod schema;
 mod transactions_importer;
 mod transactions_processor;
 mod transactions_repository;
-
 
 fn main() {
     let cn = establish_connection();
