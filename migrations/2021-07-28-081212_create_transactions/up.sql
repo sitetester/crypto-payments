@@ -17,10 +17,3 @@ CREATE TABLE transactions (
     timereceived      BIGINT NOT NULL,
     bip125_replaceable VARCHAR NOT NULL
 );
-
-CREATE TABLE posts (
-  id                INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  title VARCHAR NOT NULL,
-  body VARCHAR NOT NULL
-
-)
