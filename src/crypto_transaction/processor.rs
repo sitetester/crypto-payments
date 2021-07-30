@@ -1,7 +1,8 @@
 use diesel::SqliteConnection;
 
 use crate::models::Deposit;
-use crate::transactions_repository::TransactionsRepository;
+
+use super::repository::TransactionsRepository;
 
 pub struct TransactionsProcessor {}
 

@@ -7,15 +7,12 @@ use std::env;
 use diesel::prelude::*;
 use dotenv::dotenv;
 
-use crate::transactions_importer::TransactionsImporter;
-use crate::transactions_processor::TransactionsProcessor;
-
 pub mod models;
 pub mod schema;
 
-mod transactions_importer;
-mod transactions_processor;
-mod transactions_repository;
+mod crypto_transaction;
+use self::crypto_transaction::importer::TransactionsImporter;
+use self::crypto_transaction::processor::TransactionsProcessor;
 
 fn main() {
     let cn = establish_connection();

@@ -53,22 +53,6 @@ pub struct NewCryptoTransaction<'a> {
 }
 
 #[derive(Queryable, Debug, QueryableByName)]
-#[table_name = "posts"]
-pub struct Post {
-    pub id: i32,
-    pub title: String,
-    pub body: String
-}
-
-#[derive(Insertable)]
-#[table_name = "posts"]
-pub struct NewPost<'a> {
-    pub title: &'a str,
-    pub body: &'a str
-}
-
-
-#[derive(Queryable, Debug, QueryableByName)]
 #[table_name = "transactions"]
 pub struct Deposit {
     pub(crate) address: String,

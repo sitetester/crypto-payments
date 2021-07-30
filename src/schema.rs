@@ -1,12 +1,4 @@
 table! {
-    posts (id) {
-        id -> Integer,
-        title -> Text,
-        body -> Text,
-    }
-}
-
-table! {
     transactions (id) {
         id -> Integer,
         involves_watchonly -> Integer,
@@ -29,6 +21,5 @@ table! {
 }
 
 allow_tables_to_appear_in_same_query!(
-    posts,
     transactions,
 );
