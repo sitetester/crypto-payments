@@ -1,3 +1,5 @@
+This task contains 2 json files that represent transactions data that could be returned by a blockchain daemon like bitcoind. 
+
 **Goal**: Process transactions and filter them for valid deposits.
 
 **Note**: A deposit is considered valid when it has at least 6 confirmations.
@@ -13,9 +15,7 @@ Known customer addresses are:
 
 ## Requirements
 
-Build a dockerized Node.js application to process the two transaction sets.
-
-If you're not comfortable with Node.js, feel free to use the language of your choice.
+Build a dockerized Rust application to process the two transaction sets.
 
 The command `docker-compose up` **MUST**:
 
@@ -38,9 +38,3 @@ The command `docker-compose up` **MUST**:
    The numbers in lines 1 - 7 **MUST** contain the count of valid deposits and their sum for the respective customer.
 
    The numbers in line 8 **MUST** be the count and the sum of the valid deposits to addresses that are not associated with a known customer.
-
-   **Note**: We'll match for these 10 lines with regular expressions. Please stick to this exact template, otherwise it won't be detected.
-
-## Submitting your results
-
-Compress your source code as zip archive and send us a link where we can download it. Sharing via Dropbox or Google Drive has worked well in the past. Make sure the Dockerfile is on the top level.
