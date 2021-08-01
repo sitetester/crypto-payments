@@ -22,22 +22,22 @@ impl TransactionsImporter {
             let transactions: CryptoTransactions = serde_json::from_reader(file).expect("error parsing JSON file");
             for transaction in transactions.transactions {
                 let tx = NewCryptoTransaction {
-                    involves_watchonly: &(transaction.involves_watchonly as i32),
-                    account: &*transaction.account,
-                    address: &*transaction.address,
-                    category: &*transaction.category,
-                    amount: &transaction.amount,
-                    label: &transaction.label,
-                    confirmations: &transaction.confirmations,
-                    blockhash: &transaction.blockhash,
-                    blockindex: &transaction.blockindex,
-                    blocktime: &transaction.blocktime,
-                    txid: &transaction.txid,
-                    vout: &transaction.vout,
-                    walletconflicts: &transaction.walletconflicts.join(","),
-                    time: &transaction.time,
-                    timereceived: &transaction.timereceived,
-                    bip125_replaceable: &transaction.bip125_replaceable,
+                    involves_watchonly: transaction.involves_watchonly as i32,
+                    account: transaction.account,
+                    address: transaction.address,
+                    category: transaction.category,
+                    amount: transaction.amount,
+                    label: transaction.label,
+                    confirmations: transaction.confirmations,
+                    blockhash: transaction.blockhash,
+                    blockindex: transaction.blockindex,
+                    blocktime: transaction.blocktime,
+                    txid: transaction.txid,
+                    vout: transaction.vout,
+                    walletconflicts: transaction.walletconflicts.join(","),
+                    time: transaction.time,
+                    timereceived: transaction.timereceived,
+                    bip125_replaceable: transaction.bip125_replaceable,
                 };
 
                 diesel::insert_into(transactions::table)
