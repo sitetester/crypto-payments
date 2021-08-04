@@ -1,5 +1,5 @@
 use diesel::{QueryDsl, RunQueryDsl, SqliteConnection};
-use diesel::dsl::{sql};
+use diesel::dsl::sql;
 use diesel::expression_methods::ExpressionMethods;
 use diesel::prelude::*;
 use diesel::sql_types::{Double, Integer};
@@ -18,6 +18,9 @@ impl TransactionsRepository {
             .group_by(address)
             .filter(address.eq_any(addresses))
             .filter(confirmations.ge(6))
+            .filter(amount.gt(0.0))
+            .filter(category.eq("receive"))
+            .distinct()
             ;
 
         query.load::<Deposit>(cn).unwrap()
@@ -29,6 +32,9 @@ impl TransactionsRepository {
             .group_by(address)
             .filter(address.ne_all(addresses))
             .filter(confirmations.ge(6))
+            .filter(amount.gt(0.0))
+            .filter(category.eq("receive"))
+            .distinct()
             ;
 
         query.load::<Deposit>(cn).unwrap()
@@ -37,6 +43,9 @@ impl TransactionsRepository {
     pub fn smallest_or_largest_valid_deposit(cn: &SqliteConnection, exp: &str) -> Deposit {
         let query = transactions.select((address, confirmations, sql::<Double>(exp)))
             .filter(confirmations.ge(6))
+            .filter(amount.gt(0.0))
+            .filter(category.eq("receive"))
+            .distinct()
             ;
 
         query.first::<Deposit>(cn).unwrap()
